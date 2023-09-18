@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double x, resultado;
+
+    // Solicita ao usuário que insira o valor de x
+    printf("Digite o valor de x: ");
+    scanf("%lf", &x);
+
+    // Verifica se o valor de x é maior ou igual a 4 para evitar divisão por zero
+    if (x >= 4) {
+        resultado = (5 * x + 3) / sqrt(x * x - 16);
+        printf("O valor de f(x) é: %lf\n", resultado);
+    } else {
+        printf("O valor de x deve ser maior ou igual a 4 para evitar divisão por zero.\n");
+    }
+
+    return 0;
+}
