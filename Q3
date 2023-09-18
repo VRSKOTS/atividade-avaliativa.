@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    double A, B, C;
+
+    // insira os valores dos lados A, B e C
+    printf("Digite o valor de A: ");
+    scanf("%lf", &A);
+    printf("Digite o valor de B: ");
+    scanf("%lf", &B);
+    printf("Digite o valor de C: ");
+    scanf("%lf", &C);
+
+    // Verifique se os lados são positivos
+    if (A > 0 && B > 0 && C > 0) {
+        // Verifique a condição da desigualdade triangular
+        if (A + B > C && A + C > B && B + C > A) {
+            if (A == B && B == C) {
+                printf("É um triângulo equilátero.\n");
+            } else if (A == B || A == C || B == C) {
+                printf("É um triângulo isósceles.\n");
+            } else {
+                printf("É um triângulo escaleno.\n");
+            }
+        } else {
+            printf("Os valores fornecidos não formam um triângulo.\n");
+        }
+    } else {
+        printf("Os valores dos lados devem ser positivos.\n");
+    }
+
+    return 0;
+}
