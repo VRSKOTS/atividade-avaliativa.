@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    double A, B, C;
+
+    // insira os valores dos lados A, B e C
+    printf("Digite o valor de A: ");
+    scanf("%lf", &A);
+    printf("Digite o valor de B: ");
+    scanf("%lf", &B);
+    printf("Digite o valor de C: ");
+    scanf("%lf", &C);
+
+    // verifique se os lados são positivos
+    if (A > 0 && B > 0 && C > 0) {
+        // desigualdade triangular
+        if (A + B > C && A + C > B && B + C > A) {
+            // Use o Teorema de Pitágoras para verificar os ângulos
+            double maior = A;
+            double cateto1 = B;
+            double cateto2 = C;
+
+            if (B > maior) {
+                maior = B;
+                cateto1 = A;
+                cateto2 = C;
+            }
+            if (C > maior) {
+                maior = C;
+                cateto1 = A;
+                cateto2 = B;
+            }
+
+            if (maior * maior == cateto1 * cateto1 + cateto2 * cateto2) {
+                printf("É um triângulo retângulo.\n");
+            } else if (maior * maior > cateto1 * cateto1 + cateto2 * cateto2) {
+                printf("É um triângulo obtusângulo.\n");
+            } else {
+                printf("É um triângulo acutângulo.\n");
+            }
+        } else {
+            printf("Os valores fornecidos não formam um triângulo.\n");
+        }
+    } else {
+        printf("Os valores dos lados devem ser positivos.\n");
+    }
+
+    return 0;
+}
