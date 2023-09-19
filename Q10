@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int codigo, numCidades, menorIndice = 0, maiorIndice = 0;
+    char estado[3], cidadeMenor[50], cidadeMaior[50];
+    float veiculos, acidentes, menorTaxa = 0, maiorTaxa = 0, mediaVeiculos = 0, mediaAcidentesRS = 0;
+
+    printf("Digite o número de cidades: ");
+    scanf("%d", &numCidades);
+
+    for (int i = 0; i < numCidades; i++) {
+        printf("Dados da cidade %d:\n", i + 1);
+        printf("Código da cidade: ");
+        scanf("%d", &codigo);
+        printf("Estado: ");
+        scanf("%s", estado);
+        printf("Número de veículos de passeio (em 1992): ");
+        scanf("%f", &veiculos);
+        printf("Número de acidentes de trânsito com vítimas (em 1992): ");
+        scanf("%f", &acidentes);
+
+        // cálculos
+        float taxaAcidentes = (acidentes / veiculos) * 1000; // Taxa por mil veículos
+        mediaVeiculos += veiculos;
+
+        if (strcmp(estado, "RS") == 0) {
+            mediaAcidentesRS += acidentes;
+        }
+
+        if (i == 0 || taxaAcidentes < menorTaxa) {
+            menorTaxa = taxaAcidentes;
+            strcpy(cidadeMenor, estado);
+        }
+
+        if (i == 0 || taxaAcidentes > maiorTaxa) {
+            maiorTaxa = taxaAcidentes;
+            strcpy(cidadeMaior, estado);
+        }
+    }
+
+    // médias
+    mediaVeiculos /= numCidades;
+    if (mediaAcidentesRS > 0) {
+        mediaAcidentesRS /= numCidades;
+    }
+
+    // resultados
+    printf("\nResultados:\n");
+    printf("Menor índice de acidentes: %.2f (Cidade: %s)\n", menorTaxa, cidadeMenor);
+    printf("Maior índice de acidentes: %.2f (Cidade: %s)\n", maiorTaxa, cidadeMaior);
+    printf("Média de veículos nas cidades brasileiras: %.2f\n", mediaVeiculos);
+    printf("Média de acidentes com vítimas entre as cidades do Rio Grande do Sul: %.2f\n", mediaAcidentesRS);
+
+    return 0;
+}
