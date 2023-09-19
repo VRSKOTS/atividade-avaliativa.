@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    int numAlunos = 30;
+    float notas[numAlunos];
+    float mediaGeral = 0.0;
+
+    for (int i = 0; i < numAlunos; i++) {
+        float n1, n2, n3;
+        printf("Digite as notas do aluno %d (separadas por espaço): ", i + 1);
+        scanf("%f %f %f", &n1, &n2, &n3);
+
+        float mediaPonderada = (n1 * 2 + n2 * 4 + n3 * 3) / 10;
+        notas[i] = mediaPonderada;
+
+        printf("Média ponderada do aluno %d: %.2f\n", i + 1, mediaPonderada);
+
+        if (mediaPonderada >= 7) {
+            printf("Aprovado\n");
+        } else {
+            printf("Reprovado\n");
+        }
+
+        mediaGeral += mediaPonderada;
+    }
+
+    mediaGeral /= numAlunos;
+    printf("Média geral da turma: %.2f\n", mediaGeral);
+
+    return 0;
+}
