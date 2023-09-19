@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    float salario, mediaSalario = 0, mediaFilhos = 0;
+    int numHabitantes = 0, numFilhos, maiorSalario = 0, numSalariosAte100 = 0;
+
+    do {
+        //  salário
+        printf("Digite o salário do habitante (ou um valor negativo para encerrar): ");
+        scanf("%f", &salario);
+
+        if (salario >= 0) {
+            // úmero de filhos
+            printf("Digite o número de filhos do habitante: ");
+            scanf("%d", &numFilhos);
+
+            // estatísticas
+            mediaSalario += salario;
+            mediaFilhos += numFilhos;
+            numHabitantes++;
+
+            if (salario > maiorSalario) {
+                maiorSalario = salario;
+            }
+
+            if (salario <= 100) {
+                numSalariosAte100++;
+            }
+        }
+    } while (salario >= 0);
+
+    // médias
+    if (numHabitantes > 0) {
+        mediaSalario /= numHabitantes;
+        mediaFilhos /= numHabitantes;
+    }
+
+    // resultados
+    printf("Média do salário da população: %.2f\n", mediaSalario);
+    printf("Média do número de filhos: %.2f\n", mediaFilhos);
+    printf("Maior salário: %d\n", maiorSalario);
+    printf("Percentual de pessoas com salário até R$100,00: %.2f%%\n", (float)numSalariosAte100 / numHabitantes * 100);
+
+    return 0;
+}
