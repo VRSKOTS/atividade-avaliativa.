@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+void imprimirMes(int numero) {
+    char *meses[12] = {"janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"};
+    int dias[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (numero >= 1 && numero <= 12) {
+        printf("O mês é %s e tem %d dias.\n", meses[numero - 1], dias[numero - 1]);
+    } else {
+        printf("Número de mês inválido.\n");
+    }
+}
+
+int main() {
+    int num;
+    printf("Digite um número entre 1 e 12: ");
+    scanf("%d", &num);
+    imprimirMes(num);
+    return 0;
+}
